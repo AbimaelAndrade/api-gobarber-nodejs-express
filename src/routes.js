@@ -17,6 +17,6 @@ routes.use(authMiddleware);
 routes.put('/users', UserController.update);
 
 routes.post('/files', FileController.store);
-routes.get('/providers', ProviderController.store);
+routes.get('/providers', ProviderController.index);
 
 export default routes;
