@@ -13,4 +13,7 @@ export default {
       });
     },
   }),
+  limits: {
+    fileSize: process.env.FILE_SIZE_AVATAR || 2097152,
+  },
 };
