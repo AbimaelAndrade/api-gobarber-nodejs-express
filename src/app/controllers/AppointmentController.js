@@ -8,7 +8,8 @@ class AppointmentController {
   async index(req, res) {
     const { page = 1, limit = 20 } = req.query;
     const validPage = page < 1 ? 1 : page;
-    const offset = (validPage - 1) * limit;
+    const validLimit = limit < 1 ? 20 : limit;
+    const offset = (validPage - 1) * validLimit;
 
     const appointment = await Appointment.findAll({
       where: {
@@ -17,7 +18,7 @@ class AppointmentController {
       },
       order: ['date'],
       attributes: ['id', 'date'],
-      limit,
+      limit: validLimit,
       offset,
       include: [
         {
