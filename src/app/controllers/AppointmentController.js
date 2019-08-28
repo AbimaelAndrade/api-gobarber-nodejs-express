@@ -66,6 +66,16 @@ class AppointmentController {
     }
 
     /**
+     * Check is provider is not user loged
+     */
+
+    if (isProvider.id === req.userId) {
+      return res
+        .status(401)
+        .json({ error: 'You can not create appointment to you' });
+    }
+
+    /**
      * Check for past dates
      *
      * startOfHour - remove os munitos e deixa somente a hora
