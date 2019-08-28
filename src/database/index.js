@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import mongo from 'mongoose';
 
 import databaseConfig from '../config/database';
 
@@ -11,6 +12,7 @@ const models = [User, File, Appointment];
 class Database {
   constructor() {
     this.init();
+    this.mongo();
   }
 
   init() {
@@ -19,6 +21,16 @@ class Database {
     models
       .map(model => model.init(this.connection))
       .map(model => model.associate && model.associate(this.connection.models));
+  }
+
+  mongo() {
+    this.mongoConfig = mongo.connect(
+      'mongodb://andrade:a1b220com@ds255917.mlab.com:55917/gobarber',
+      {
+        useNewUrlParser: true,
+        useFindAndModify: true,
+      }
+    );
   }
 }
 
