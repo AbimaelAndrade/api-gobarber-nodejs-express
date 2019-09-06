@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 module.exports = {
-  dialect: 'postgres',
-  host: 'localhost',
-  username: 'abimael',
-  password: '',
-  database: 'goBarber',
+  dialect: process.env.BD_DIALECT,
+  host: process.env.BD_HOST,
+  username: process.env.BD_USER,
+  password: process.env.BD_PASS,
+  database: process.env.BD_NAME,
   define: {
     timestamps: true,
     underscored: true,

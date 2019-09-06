@@ -24,13 +24,10 @@ class Database {
   }
 
   mongo() {
-    this.mongoConfig = mongo.connect(
-      'mongodb://andrade:a1b220com@ds255917.mlab.com:55917/gobarber',
-      {
-        useNewUrlParser: true,
-        useFindAndModify: true,
-      }
-    );
+    this.mongoConfig = mongo.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useFindAndModify: true,
+    });
   }
 }
 
